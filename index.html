@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bubu ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    font-family:'Poppins',sans-serif;
+    background:#fff3f7;
+    color:#333;
+    overflow-x:hidden;
+}
+
+/* ---------- CONFETTI CANVAS ---------- */
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    pointer-events:none;
+    z-index:999;
+}
+
+/* ---------- FLOATING HEARTS ---------- */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:18px;
+    color:rgba(255,0,100,0.55);
+    animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+    0%{transform:translateY(0) scale(1);opacity:1;}
+    100%{transform:translateY(-120vh) scale(1.5);opacity:0;}
+}
+
+/* ---------- SCROLL REVEAL ---------- */
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s ease;
+}
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ---------- SECTIONS ---------- */
+section{
+    padding:90px 8%;
+}
+h2{
+    color:#8b004b;
+    margin-bottom:20px;
+}
+p{
+    line-height:1.9;
+    font-size:1rem;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+}
+.hero h1{
+    font-family:'Pacifico',cursive;
+    font-size:3.4rem;
+}
+.hero span{
+    margin-top:15px;
+    font-size:1.2rem;
+}
+.scroll-down{
+    margin-top:60px;
+    font-size:2.5rem;
+    animation:bounce 1.5s infinite;
+}
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(12px);}
+}
+
+/* ---------- CARD ---------- */
+.card{
+    background:white;
+    padding:45px;
+    border-radius:30px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+/* ---------- QUOTES ---------- */
+.quotes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+}
+.quote{
+    background:linear-gradient(135deg,#ffe0ea,#ffffff);
+    padding:35px;
+    border-radius:22px;
+    transition:0.4s;
+}
+.quote:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* ---------- MEMORIES ---------- */
+.memories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:30px;
+}
+.memory{
+    background:white;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 18px 40px rgba(0,0,0,0.15);
+    animation:fadeUp 1.2s ease forwards;
+}
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px);}
+    to{opacity:1;transform:translateY(0);}
+}
+.memory img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    transition:0.6s;
+}
+.memory:hover img{
+    transform:scale(1.12);
+    animation:pulse 1.2s infinite;
+}
+@keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,105,180,0.6);}
+    70%{box-shadow:0 0 0 20px rgba(255,105,180,0);}
+    100%{box-shadow:0 0 0 0 rgba(255,105,180,0);}
+}
+.memory-text{
+    padding:18px;
+    text-align:center;
+}
+.memory-date{
+    font-family:'Shadows Into Light',cursive;
+    font-size:1.05rem;
+    color:#777;
+    margin-bottom:6px;
+}
+.memory-event{
+    font-size:1rem;
+    font-weight:500;
+    color:#8b004b;
+}
+
+/* ---------- TIMELINE ---------- */
+.timeline{
+    border-left:3px solid #b1005a;
+    padding-left:30px;
+}
+.time{
+    margin-bottom:40px;
+    position:relative;
+}
+.time::before{
+    content:'';
+    width:14px;
+    height:14px;
+    background:#b1005a;
+    border-radius:50%;
+    position:absolute;
+    left:-39px;
+    top:5px;
+}
+
+/* ---------- PROMISE ---------- */
+.promise{
+    background:linear-gradient(135deg,#ffd1dc,#fff);
+    border-radius:35px;
+    padding:55px;
+    box-shadow:0 25px 55px rgba(0,0,0,0.2);
+}
+
+/* ---------- SURPRISE ---------- */
+.surprise{
+    text-align:center;
+}
+.arrow{
+    font-size:3rem;
+    cursor:pointer;
+    animation:bounce 1.5s infinite;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<section class="hero">
+    <h1>Happieee wala Birthday Bubu 🎂</h1>
+    <span>Many many Happy returns of the day puchkee ❤️</span>
+    <div class="scroll-down">⬇</div>
+</section>
+
+<section class="reveal">
+    <div class="card">
+        <h2>Why you are special to me</h2>
+        <p>
+            I don't know how to express the sense of gratitude, love and peace I get from you.
+            You are the best thing that happened after so many years.
+            Tor sathe thakle sob kichu khub perfect lage, easy lage, best lage,
+            like I can win the whole world.
+            Tor hasi, boka, kanna sob kichukei khub mon theke cherish kori.
+            Please forgive me for sometimes being rude and mean.
+            Still, I love you the most.
+        </p>
+    </div>
+</section>
+
+<section class="reveal">
+    <h2>The little things I love about you</h2>
+    <div class="quotes">
+        <div class="quote">Tor hasi — fixes my worst days.</div>
+        <div class="quote">Tor boka — makes life lighter.</div>
+        <div class="quote">Tor kanna — makes me protective.</div>
+        <div class="quote">Tor presence — feels like home.</div>
+    </div>
+</section>
+
+<section class="reveal">
+    <h2>Some memories that stay forever 💫</h2>
+    <div class="memories">
+        <div class="memory">
+            <img src="Photo1.jpg">
+            <div class="memory-text">
+                <div class="memory-date">September 22, 2024</div>
+                <div class="memory-event">Our first date — a biriyani date 🍽️</div>
+            </div>
+        </div>
+        <div class="memory">
+            <img src="Photo2.jpg">
+            <div class="memory-text">
+                <div class="memory-date">October 9, 2024</div>
+                <div class="memory-event">Our first Durga Puja — tired but happy</div>
+            </div>
+        </div>
+        <div class="memory">
+            <img src="Photo3.jpg">
+            <div class="memory-text">
+                <div class="memory-date">December 15, 2024</div>
+                <div class="memory-event">Seeing you in a saree for the first time</div>
+            </div>
+        </div>
+        <div class="memory">
+            <img src="Photo4.jpg">
+            <div class="memory-text">
+                <div class="memory-date">July 27, 2025</div>
+                <div class="memory-event">Our first whole day tour together</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reveal">
+    <h2>When memories turned into emotions</h2>
+    <div class="timeline">
+        <div class="time"><p>Still onek onek memory er majhe ei koyta amar jonne onek special.</p></div>
+        <div class="time"><p>And I can’t forget the date <b>26/12/2025</b>… can I?</p></div>
+    </div>
+</section>
+
+<section class="reveal">
+    <div class="promise">
+        <p>
+            No matter what happens, I will always choose you.
+            I will keep bothering you, poking you, scolding you,
+            giving you stupid advices.
+            I will keep supporting you, motivating you, trusting you,
+            and standing beside you like a shadow forever.
+            Whatever it is… I will love you and love you the most.
+        </p>
+    </div>
+</section>
+
+<section class="surprise reveal">
+    <p>Here is a surprise for you</p>
+    <div class="arrow" onclick="location.href='surprise.html'">⬇</div>
+</section>
+
+<script>
+/* Scroll Reveal */
+window.addEventListener('scroll',()=>{
+    document.querySelectorAll('.reveal').forEach(el=>{
+        if(el.getBoundingClientRect().top < window.innerHeight - 100){
+            el.classList.add('active');
+        }
+    });
+});
+
+/* Floating Hearts */
+setInterval(()=>{
+    const heart=document.createElement('div');
+    heart.className='heart';
+    heart.innerHTML='❤️';
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.animationDuration=3+Math.random()*3+'s';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+},400);
+
+/* Confetti Burst */
+const canvas=document.getElementById("confetti");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let confetti=[];
+for(let i=0;i<150;i++){
+    confetti.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height-canvas.height,
+        r:Math.random()*6+4,
+        d:Math.random()*10+5,
+        color:`hsl(${Math.random()*360},100%,70%)`
+    });
+}
+function drawConfetti(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    confetti.forEach(c=>{
+        ctx.beginPath();
+        ctx.arc(c.x,c.y,c.r,0,Math.PI*2);
+        ctx.fillStyle=c.color;
+        ctx.fill();
+        c.y+=c.d;
+        if(c.y>canvas.height) c.y=-10;
+    });
+}
+setInterval(drawConfetti,30);
+setTimeout(()=>{canvas.style.display="none";},6000);
+</script>
+
+</body>
+</html>
